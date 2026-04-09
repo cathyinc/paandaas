@@ -1,1 +1,1 @@
-from .prg1 import display
+from .prog1 import display
