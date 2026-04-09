@@ -1,4 +1,4 @@
-def display():
+def display1():
     code = '''import math
 
 docs = {
