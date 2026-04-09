@@ -1,6 +1,5 @@
-def display(1):
-    print(1)
-
+def display1(x):
+    print(x)
 
 
 import math
