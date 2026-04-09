@@ -1,1 +1,1 @@
-from paandaas import display
+from .prg1 import display
