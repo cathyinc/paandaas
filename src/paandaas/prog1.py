@@ -1,8 +1,5 @@
-def display1(x):
-    print(x)
-
-
-import math
+def display():
+    code = '''import math
 
 docs = {
     "Good Boy",
@@ -35,4 +32,5 @@ tfidf_values = [tf * idf for tf in tf_values]
 print("TF (Term Frequency):", tf_values)
 print("DF (Document Frequency):", df)
 print("IDF (Inverse Document Frequency):", idf)
-print("TF-IDF:", tfidf_values)
+print("TF-IDF:", tfidf_values)'''
+    print(code)
