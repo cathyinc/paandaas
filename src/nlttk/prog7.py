@@ -1,34 +1,22 @@
 def display7():
-    code = '''import numpy as np
-def centroid(data, k):
-    return data[np.random.choice(data.shape[0], k, replace=False)]
-def clust(data, centroids):
-    distances = np.linalg.norm(data[:, np.newaxis] - centroids, axis=2)
-    return np.argmin(distances, axis=1)
-def update(data, clusters, k):
-    return np.array([data[clusters == i].mean(axis=0) for i in range(k)])
-def kmeans(data, k, max_iterations=100):
-    centroids = centroid(data, k)
-    for _ in range(max_iterations):
-        clusters = clust(data, centroids)
-        new_centroids = update(data, clusters, k)
-        if np.all(centroids == new_centroids):
-            break
-        centroids = new_centroids
-    return centroids, clusters
-if __name__ == "__main__":
-    num_points = int(input("Enter number of data points: "))
-    num_features = int(input("Enter number of features: "))
-    k = int(input("Enter number of clusters: "))
-    data = []
-    print("Enter data points (space-separated values):")
-    for _ in range(num_points):
-        point = list(map(float, input().split()))
-        data.append(point)
-    data = np.array(data)
-    centroids, clusters = kmeans(data, k)
-    print("Final centroids:")
-    print(centroids)
-    print("Cluster assignments:")
-    print(clusters)'''
+    code = '''a={10,20,30,40,50}
+b={30,40,50,60,70}
+c={10,20}
+d={80,90}
+print("set a:",a)
+print("set b:",b)
+print("set c:",c)
+print("set d:",d)
+print("\\n 1.union:",a|b)
+print("\\n 2.intersection:",a&b)
+print("\\n 3.difference:",a-b)
+print("\\n 4.difference:",b-a)
+print("\\n 5.symmetric difference:",a^b)
+print("Is c subset of a:",c.issubset(a))
+print("Is a superset of c:",a.issuperset(c))
+print("Are a and b disjoint:",a.isdisjoint(d))
+a.add(100)
+print("\\n after adding 100 to a:",a)
+a.remove(10)
+print("\\n after removing 10 from a:",a)'''
     print(code)
