@@ -1,32 +1,38 @@
 def display6():
-    code = '''import numpy as np
-def pr(links,num_pages,iterations,damping=0.85):
-    ranks=np.ones(num_pages)/num_pages
-    M=np.zeros((num_pages,num_pages))
-    for page,outgoing_links in links.items():
-        if outgoing_links:
-            for link in outgoing_links:
-                if 0<=link < num_pages:
-                    M[link,page]=1/len(outgoing_links)
-                else:
-                    print(f"Warning:ignoring invalid link {link} from page {page}")
-        else:
-            M[:,page]=1/num_pages
-    M=damping*M+(1-damping)/num_pages
-    print("Iteration Results:")
-    for i in range(iterations):
-        new_ranks=np.dot(M,ranks)
-        print(f"Iteration {i+1}:{new_ranks}")
-        ranks=new_ranks
-    return ranks
-if __name__=="__main__":
-    num_pages=int(input("Enter the number of pages:"))
-    iterations=int(input("Enter the number of iterations:"))
-    web_graph={}
-    for i in range(num_pages):
-        links=list(map(int,input(f"Enter outgoing links from page{i}  (sapce-separated):").split()))
-        web_graph[i]=[link for link in links if 0<=link <num_pages]
-    ranks=pr(web_graph,num_pages,iterations)
-    for i,rank in enumerate(ranks):
-        print(f"Final Rank Page{i},{rank:.4f}")'''
+    code = '''N = 4
+ld = [0] * (2 * N - 1)  
+rd = [0] * (2 * N - 1)   
+cl = [0] * N             
+
+def printSolution(board):
+    for i in range(N):
+        for j in range(N):
+            print("Q" if board[i][j] == 1 else ".", end=" ")
+        print()
+def solveNQUtil(board, col):
+    if col >= N:
+        return True
+    for i in range(N):
+        if ld[i - col + N - 1] == 0 and rd[i + col] == 0 and cl[i] == 0:
+            board[i][col] = 1
+            ld[i - col + N - 1] = rd[i + col] = cl[i] = 1
+
+            if solveNQUtil(board, col + 1):
+                return True
+
+            board[i][col] = 0
+            ld[i - col + N - 1] = rd[i + col] = cl[i] = 0
+    return False
+def solveNQ():
+    board = [[0 for _ in range(N)] for _ in range(N)]
+
+    if not solveNQUtil(board, 0):
+        print("Solution doesn't exist")
+        return False
+
+    printSolution(board)
+    return True
+
+if __name__ == "__main__":
+    solveNQ()'''
     print(code)
