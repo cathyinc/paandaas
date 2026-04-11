@@ -1,44 +1,34 @@
 def display8():
-    code = '''import numpy as np
-from scipy.spatial.distance import euclidean
-def init_clusters(data):
-    return [[point] for point in data]
-def closest_clusters(clusters):
-    min_distance = float('inf')
-    closest_pair = (0, 1)
-    for i in range(len(clusters)):
-        for j in range(i + 1, len(clusters)):
-            centroid_i = np.mean(clusters[i], axis=0)
-            centroid_j = np.mean(clusters[j], axis=0)
-            distance = euclidean(centroid_i, centroid_j)
-            if distance < min_distance:
-                min_distance = distance
-                closest_pair = (i, j)
-    return closest_pair
-def merge_clusters(clusters, i, j):
-    clusters[i].extend(clusters[j])
-    clusters.pop(j)
-def cure(data, num_clusters):
-    clusters = init_clusters(data)
-    while len(clusters) > num_clusters:
-        i, j = closest_clusters(clusters)
-        merge_clusters(clusters, i, j)
-    return clusters
-if __name__ == "__main__":
-    num_points = int(input("Enter the number of data points: "))
-    num_features = int(input("Enter the number of features: "))
-    num_clusters = int(input("Enter the number of clusters: "))
-    data = []
-    print("Enter data points (space-separated values):")
-    for _ in range(num_points):
-        point = list(map(float, input().split()))
-        if len(point) != num_features:
-            print("Error: Number of features does not match!")
-            exit()
-        data.append(point)
-    data = np.array(data)
-    clusters = cure(data, num_clusters)
-    print("\\nFinal Clusters:")
-    for i, cluster in enumerate(clusters):
-        print(f"Cluster {i+1}: {np.array(cluster)}")'''
+    code = '''class Client:
+    def __init__(self, name, address, phone):
+        self.name = name
+        self.address = address
+        self.phone = phone
+
+    def place_order(self, order):
+        print(f"Order placed by {self.name}: {order}")
+
+class Worker:
+    def __init__(self, name, id):
+        self.name = name
+        self.id = id
+
+    def take_order(self, client, order):
+        print(f"Order taken by {self.name} (ID: {self.id}) from {client.name}: {order}")
+
+
+class FoodItem:
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+
+    def display(self):
+        print(f"{self.name}: ${self.price}")
+
+client1 = Client("John Doe", "123 Main St", "123-456-7890")
+worker1 = Worker("Alice", "WORK1")
+food1 = FoodItem("Pizza", 10.99)
+client1.place_order("2 pizzas and 1 coke")
+worker1.take_order(client1, "2 pizzas and 1 coke")
+food1.display()'''
     print(code)
