@@ -8,3 +8,5 @@ from .prog7 import display7
 from .prog8 import display8
 from .prog9 import display9
 from .prog10 import display10
+from .prog11 import display11
+from .prog12 import display12
